@@ -8,6 +8,7 @@ import { Movies } from "./Movies/Movies";
 import { SearchBar } from "./SearchBar/SearchBar";
 import { MovieDetails } from "./MovieDetails/MovieDetails";
 import { Cast } from "./Cast/Cast";
+import { Reviews } from "./Review/Reviews";
 export const App = () => {
   // const [app, setApp] = useState({ home: [], movies: [], movie: [] });
   const stateMachine = {
@@ -39,6 +40,7 @@ export const App = () => {
         <Route index element={<Movies movies={movies} />} />
         <Route path=":id" element={<MovieDetails movies={movies} />} >
           <Route path="cast" element={<Cast movies={movies} />} />
+          <Route path="reviews" element={<Reviews movies={movies} />} />
         </Route>
       </Route>
     </Routes>
