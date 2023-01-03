@@ -1,6 +1,6 @@
 import { fetchById } from "components/fetch"
 import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 export const Reviews = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
@@ -9,9 +9,9 @@ export const Reviews = () => {
     }, [id])
     if (movie !== null) {
         return <div>
-            <ul>
+            {movie.results.length > 0 ? <ul>
                 {movie.results.map(item => <li key={item.id}>{item.author}:{item.content}</li>)}
-            </ul>
+            </ul> : <div>No reviews </div>}
         </div>
     }
 }

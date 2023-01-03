@@ -1,5 +1,4 @@
-import { fetchById } from "components/fetch"
-import { useState } from "react"
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom"
 
 
@@ -10,3 +9,8 @@ export const Home = ({ movies, options, onClick }) => {
         </ul>
     </div >
 }
+Home.propTypes = {
+    movies: PropTypes.array.isRequired,
+    options: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
+};

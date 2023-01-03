@@ -1,8 +1,9 @@
+import PropTypes from "prop-types";
 import { useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 
 
-export const SearchBar = ({ onSubmit, options }) => {
+export const SearchBar = ({ onSubmit }) => {
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState('')
     const onChange = (e) => {
@@ -25,3 +26,6 @@ export const SearchBar = ({ onSubmit, options }) => {
         <button type="submit">add</button>
     </form><Outlet /></div>
 }
+SearchBar.propTypes = {
+    onSubmit: PropTypes.func.isRequired
+};

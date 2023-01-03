@@ -1,7 +1,8 @@
 import { fetchById } from "components/fetch";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link, Outlet, useParams, useLocation, useNavigate } from "react-router-dom"
+import { Link, Outlet, useParams } from "react-router-dom"
+import PropTypes from "prop-types";
 const imageUrl = "https://image.tmdb.org/t/p/w300";
 export const MovieDetails = ({ query }) => {
     const { id } = useParams();
@@ -22,7 +23,7 @@ export const MovieDetails = ({ query }) => {
     if (movie !== null) {
         return <>
             {query ? <Link to={`/movies/search/${query}`}>back</Link> : <Link to={"/home"}>back</Link>}
-            {movie.map(item => <div key={item.id}><img src={`${imageUrl}${item.backdrop_path}`} /><h2>{item.title}</h2>
+            {movie.map(item => <div key={item.id}><img src={`${imageUrl}${item.backdrop_path}`} alt={item.name} /><h2>{item.title}</h2>
                 <p>{`Score:${movieScore(item.vote_average)}`}</p>
                 <p>{`Overview:${item.overview}`}</p>
                 <p>{`Genres:${movieGanres(item.genres)}`}</p>
@@ -40,3 +41,6 @@ export const MovieDetails = ({ query }) => {
     }
 
 }
+MovieDetails.propTypes = {
+    query: PropTypes.string.isRequired,
+};
