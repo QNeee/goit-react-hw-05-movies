@@ -1,8 +1,9 @@
 import { useState } from "react"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 
 
 export const SearchBar = ({ onSubmit, options }) => {
+    const navigate = useNavigate();
     const [inputValue, setInputValue] = useState('')
     const onChange = (e) => {
         setInputValue(e.target.value)
@@ -12,6 +13,7 @@ export const SearchBar = ({ onSubmit, options }) => {
         const userInput = inputValue.trim();
         if (!userInput) return;
         onSubmit(userInput);
+        navigate(`/movies/search/${userInput}`);
     }
     return <div><form onSubmit={handleSubmit}>
         <input

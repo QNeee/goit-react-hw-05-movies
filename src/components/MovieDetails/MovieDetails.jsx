@@ -1,14 +1,17 @@
 import { fetchById } from "components/fetch";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom"
+import { Link, Outlet, useParams, useLocation, useNavigate } from "react-router-dom"
 const imageUrl = "https://image.tmdb.org/t/p/w300";
-export const MovieDetails = () => {
+export const MovieDetails = ({ query }) => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     useEffect(() => {
-        fetchById(id).then(({ data }) => setMovie([data]));
+        fetchById(id).then(({ data }) => {
+            setMovie([data])
+        });
     }, [id]);
+
     const movieScore = score => {
         return Math.floor(score * 10) + '%';
     };
@@ -18,8 +21,7 @@ export const MovieDetails = () => {
     };
     if (movie !== null) {
         return <>
-            {console.log(movie)}
-            <Link to={"/"}>back</Link>
+            {query ? <Link to={`/movies/search/${query}`}>back</Link> : <Link to={"/home"}>back</Link>}
             {movie.map(item => <div key={item.id}><img src={`${imageUrl}${item.backdrop_path}`} /><h2>{item.title}</h2>
                 <p>{`Score:${movieScore(item.vote_average)}`}</p>
                 <p>{`Overview:${item.overview}`}</p>
@@ -32,6 +34,9 @@ export const MovieDetails = () => {
                 <Outlet />
             </div>
         </>
+
+    } else {
+        return <div>Nothing<Link to={"/home"}>back</Link></div>
     }
 
 }

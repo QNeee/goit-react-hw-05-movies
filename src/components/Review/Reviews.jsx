@@ -13,7 +13,5 @@ export const Reviews = () => {
                 {movie.results.map(item => <li key={item.id}>{item.author}:{item.content}</li>)}
             </ul>
         </div>
-    } else {
-        return <div></div>
     }
 }
