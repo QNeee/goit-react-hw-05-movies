@@ -11,8 +11,9 @@ const MovieDetails = ({ query }) => {
     useEffect(() => {
         fetchById(id).then(({ data }) => {
             setMovie([data])
-
-        }).catch(eror => eror);
+        }).catch(eror => {
+            setMovie(null)
+        });
     }, [id]);
 
     const movieScore = score => {
@@ -21,7 +22,7 @@ const MovieDetails = ({ query }) => {
     const movieGanres = genres => {
         if (genres === null) return;
         return genres.map(genre => genre.name).join(', ');
-    };
+    }
     if (movie !== null) {
         return <Details>
             {query ? <GoBackLink to={`/movies/search/${query}`}>back</GoBackLink> : <GoBackLink to={"/"}>back</GoBackLink>}
@@ -30,20 +31,18 @@ const MovieDetails = ({ query }) => {
                 <div><h3>OverView:</h3>{item.overview}</div>
                 <div><h3>Genres:</h3>{movieGanres(item.genres)}</div></Description>
             </Container>)}
-            {movie.length > 0 ? <InfoContainer>
+            <InfoContainer >
                 Aditional Information
                 <InfoUl>
                     <InfoLi><InfoLink to={`cast`} >cast</InfoLink></InfoLi>
                     <InfoLi><InfoLink to={`reviews`} >reviews</InfoLink></InfoLi>
                     <Outlet />
                 </InfoUl>
-            </InfoContainer> : <p>Nothing</p>}
-        </Details>
+            </InfoContainer>
 
-    } else {
-        return setMovie([]);
+        </Details >
+
     }
-
 }
 MovieDetails.propTypes = {
     query: PropTypes.string.isRequired,
