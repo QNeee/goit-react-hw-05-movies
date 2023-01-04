@@ -11,7 +11,7 @@ const Reviews = () => {
     if (movie !== null) {
         return <div>
             {movie.results.length > 0 ? <ul>
-                {movie.results.map(item => <ReviewItem key={item.id}><ReviewAuthor>{item.author}</ReviewAuthor><ReviewContent>{item.content}</ReviewContent></ReviewItem>)}
+                {movie.results.map(item => <ReviewItem key={item.id}><ReviewAuthor>Author: {item.author}</ReviewAuthor><ReviewContent>{item.content}</ReviewContent></ReviewItem>)}
             </ul> : <div>No reviews </div>}
         </div>
     }
