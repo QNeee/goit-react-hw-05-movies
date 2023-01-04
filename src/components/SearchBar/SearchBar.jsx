@@ -10,7 +10,6 @@ const SearchBar = ({ onSubmit }) => {
     const [inputValue, setInputValue] = useState('');
     const onChange = (e) => {
         setInputValue(e.target.value)
-        console.log(inputValue);
     }
     const handleSubmit = (e) => {
         e.preventDefault();
