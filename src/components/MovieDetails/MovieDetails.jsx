@@ -1,7 +1,7 @@
 import { fetchById } from "components/fetch";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom"
+import { Outlet, useParams } from "react-router-dom"
 import { GoBackLink, InfoLi, Container, Description, Details, InfoLink, InfoContainer, InfoUl } from "./MovieDetails.styled";
 import PropTypes from "prop-types";
 const imageUrl = "https://image.tmdb.org/t/p/w300";
@@ -23,11 +23,11 @@ export const MovieDetails = ({ query }) => {
     };
     if (movie !== null) {
         return <Details>
-            {query ? <GoBackLink to={`/movies/search/${query}`}>back</GoBackLink> : <GoBackLink to={"/home"}>back</GoBackLink>}
-            {movie.map(item => <Container key={item.id}><img src={`${imageUrl}${item.backdrop_path}`} alt={item.name} /><Description><h2>{item.title}</h2>
-                <p>{`Score:${movieScore(item.vote_average)}`}</p>
-                <p>{`Overview:${item.overview}`}</p>
-                <p>{`Genres:${movieGanres(item.genres)}`}</p></Description>
+            {query ? <GoBackLink to={`/movies/search/${query}`}>back</GoBackLink> : <GoBackLink to={"/"}>back</GoBackLink>}
+            {movie.map(item => <Container key={item.id}><img src={`${imageUrl}${item.backdrop_path}`} alt={item.name} width="600" /><Description><h2>{item.title} ({item.release_date})</h2>
+                <p>{`User Score:${movieScore(item.vote_average)}`}</p>
+                <div><h3>OverView:</h3>{item.overview}</div>
+                <div><h3>Genres:</h3>{movieGanres(item.genres)}</div></Description>
             </Container>)}
             <InfoContainer>
                 Aditional Information
@@ -40,7 +40,7 @@ export const MovieDetails = ({ query }) => {
         </Details>
 
     } else {
-        return <div>Nothing<Link to={"/home"}>back</Link></div>
+        return <Details><GoBackLink to={"/"}>back</GoBackLink><p>Nothing</p></Details>
     }
 
 }

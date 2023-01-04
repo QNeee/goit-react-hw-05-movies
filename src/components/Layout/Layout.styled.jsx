@@ -19,7 +19,7 @@ export const Header = styled.header`  top: 0;
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);`;
 export const Nav = styled.nav`margin-right:auto;`;
 export const NavItem = styled(NavLink)`
- margin-right:20px;
+ margin-right:20px; 
 text-decoration:none;
 color:white;
   &.active, :hover {
