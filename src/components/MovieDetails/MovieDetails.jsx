@@ -11,7 +11,7 @@ const MovieDetails = ({ query }) => {
     useEffect(() => {
         fetchById(id).then(({ data }) => {
             setMovie([data])
-        });
+        }).catch(eror => eror);
     }, [id]);
 
     const movieScore = score => {
