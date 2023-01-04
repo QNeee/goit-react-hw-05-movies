@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { Outlet } from "react-router-dom"
 import { Header, Nav, NavItem, Main } from "./Layout.styled"
 export const Layout = () => {
@@ -6,5 +7,5 @@ export const Layout = () => {
             <NavItem to={"/"}>Home</NavItem>
             <NavItem to={"/movies"}>Movies</NavItem>
         </Nav>
-    </Header><Main><Outlet /></Main></>
+    </Header><Main><Suspense fallback={null}><Outlet /></Suspense></Main></>
 }

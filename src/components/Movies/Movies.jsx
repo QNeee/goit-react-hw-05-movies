@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom"
-export const Movies = ({ movies, options }) => {
+const Movies = ({ movies, options }) => {
     if (movies.length > 0) {
         return <div>
             <ul>
@@ -15,3 +15,4 @@ Movies.propTypes = {
     movies: PropTypes.array.isRequired,
 
 };
+export default Movies;

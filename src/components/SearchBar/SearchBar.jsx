@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 import { Form, Button, Input } from "./SearchBar.styled";
 
-export const SearchBar = ({ onSubmit }) => {
+const SearchBar = ({ onSubmit }) => {
     const navigate = useNavigate();
     const [inputValue, setInputValue] = useState('')
     const onChange = (e) => {
@@ -29,3 +29,4 @@ export const SearchBar = ({ onSubmit }) => {
 SearchBar.propTypes = {
     onSubmit: PropTypes.func.isRequired
 };
+export default SearchBar;

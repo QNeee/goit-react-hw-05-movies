@@ -5,7 +5,7 @@ import { Outlet, useParams } from "react-router-dom"
 import { GoBackLink, InfoLi, Container, Description, Details, InfoLink, InfoContainer, InfoUl } from "./MovieDetails.styled";
 import PropTypes from "prop-types";
 const imageUrl = "https://image.tmdb.org/t/p/w300";
-export const MovieDetails = ({ query }) => {
+const MovieDetails = ({ query }) => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     useEffect(() => {
@@ -47,3 +47,4 @@ export const MovieDetails = ({ query }) => {
 MovieDetails.propTypes = {
     query: PropTypes.string.isRequired,
 };
+export default MovieDetails;
