@@ -1,4 +1,4 @@
-import { Suspense } from "react"
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom"
 import { Header, Nav, NavItem, Main } from "./Layout.styled"
 export const Layout = () => {

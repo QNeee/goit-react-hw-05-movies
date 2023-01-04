@@ -17,7 +17,6 @@ export const App = () => {
 
     fetchTrendings().then(({ data }) => {
       setHome(data.results)
-
     })
   }, [])
   const handleSubmit = (query) => {
@@ -38,7 +37,7 @@ export const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home options={query} onClick={onClickHome} movies={home} />} />
         <Route path="movies" element={<SearchBar onSubmit={handleSubmit} />} >
-          <Route path="search/:query" element={<Movies movies={movies} />} />
+          <Route path="search/:query" element={<Movies options={query} movies={movies} />} />
         </Route>
         <Route path="/movies/:id" element={<MovieDetails query={query} movies={movies} />} >
           <Route path="cast" element={<Cast movies={movies} />} />
@@ -47,6 +46,5 @@ export const App = () => {
         <Route path="*" element={<Home options={query} onClick={onClickHome} movies={home} />} />
       </Route>
     </Routes>
-
   </>
 }

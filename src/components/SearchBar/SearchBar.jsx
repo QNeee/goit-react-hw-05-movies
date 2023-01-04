@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
+
 import { useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 import { Form, Button, Input } from "./SearchBar.styled";
 
+
 const SearchBar = ({ onSubmit }) => {
     const navigate = useNavigate();
-    const [inputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue] = useState('');
     const onChange = (e) => {
         setInputValue(e.target.value)
+        console.log(inputValue);
     }
     const handleSubmit = (e) => {
         e.preventDefault();

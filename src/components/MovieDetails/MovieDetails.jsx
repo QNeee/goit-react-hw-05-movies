@@ -40,6 +40,7 @@ const MovieDetails = ({ query }) => {
         </Details>
 
     } else {
+        setMovie([]);
         return <Details><GoBackLink to={"/"}>back</GoBackLink><p>Nothing</p></Details>
     }
 
