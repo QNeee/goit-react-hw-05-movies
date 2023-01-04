@@ -13,7 +13,8 @@ export const App = () => {
   // const [app, setApp] = useState({ home: [], movies: [], movie: [] });
   const [home, setHome] = useState([]);
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState(''); useEffect(() => {
+  const [query, setQuery] = useState('');
+  useEffect(() => {
     fetchTrendings().then(({ data }) => {
       setHome(data.results)
     })
@@ -38,12 +39,12 @@ export const App = () => {
         <Route index element={<Home options={query} onClick={onClickHome} movies={home} />} />
         <Route path="home" element={<Home options={query} onClick={onClickHome} movies={home} />} />
         <Route path="movies" element={<SearchBar onSubmit={handleSubmit} />} >
-          <Route path="search/:query" element={movies.length > 0 ? <Movies movies={movies} /> : <div>Wrong Value</div>} />
+          <Route path="search/:query" element={<Movies movies={movies} />} />
         </Route>
-      </Route>
-      <Route path="/movies/:id" element={<MovieDetails query={query} movies={movies} />} >
-        <Route path="cast" element={<Cast movies={movies} />} />
-        <Route path="reviews" element={<Reviews movies={movies} />} />
+        <Route path="/movies/:id" element={<MovieDetails query={query} movies={movies} />} >
+          <Route path="cast" element={<Cast movies={movies} />} />
+          <Route path="reviews" element={<Reviews movies={movies} />} />
+        </Route>
       </Route>
     </Routes>
 

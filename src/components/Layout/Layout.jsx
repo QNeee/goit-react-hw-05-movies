@@ -1,11 +1,11 @@
-import { Link, Outlet } from "react-router-dom"
-
+import { Outlet } from "react-router-dom"
+import { Header, Nav, NavItem, Main } from "./Layout.styled"
 export const Layout = () => {
 
-    return <><header>
-        <nav>
-            <Link to={"/home"}>Home</Link>
-            <Link to={"/movies"}>Movies</Link>
-        </nav>
-    </header><main><Outlet /></main></>
+    return <><Header>
+        <Nav>
+            <NavItem to={"/home"}>Home</NavItem>
+            <NavItem to={"/movies"}>Movies</NavItem>
+        </Nav>
+    </Header><Main><Outlet /></Main></>
 }
