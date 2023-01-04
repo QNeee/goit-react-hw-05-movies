@@ -11,6 +11,7 @@ const MovieDetails = ({ query }) => {
     useEffect(() => {
         fetchById(id).then(({ data }) => {
             setMovie([data])
+
         }).catch(eror => eror);
     }, [id]);
 
@@ -29,19 +30,18 @@ const MovieDetails = ({ query }) => {
                 <div><h3>OverView:</h3>{item.overview}</div>
                 <div><h3>Genres:</h3>{movieGanres(item.genres)}</div></Description>
             </Container>)}
-            <InfoContainer>
+            {movie.length > 0 ? <InfoContainer>
                 Aditional Information
                 <InfoUl>
                     <InfoLi><InfoLink to={`cast`} >cast</InfoLink></InfoLi>
                     <InfoLi><InfoLink to={`reviews`} >reviews</InfoLink></InfoLi>
                     <Outlet />
                 </InfoUl>
-            </InfoContainer>
+            </InfoContainer> : <p>Nothing</p>}
         </Details>
 
     } else {
-        setMovie([]);
-        return <Details><GoBackLink to={"/"}>back</GoBackLink><p>Nothing</p></Details>
+        return setMovie([]);
     }
 
 }
