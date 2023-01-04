@@ -35,7 +35,12 @@ export const Details = styled.div`
 padding:15px;
 `
 export const InfoLink = styled(Link)`
+color:black;
 text-decoration:none;
+:hover{
+    background-color:red;
+    color:white;
+}
 `
 export const InfoContainer = styled.div`
 margin-top:40px;
@@ -44,5 +49,6 @@ export const InfoUl = styled.ul`
 padding:15px;
 `
 export const InfoLi = styled.li`
+color:red;
 margin-bottom:15px;
 `

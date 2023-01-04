@@ -1,6 +1,7 @@
 import { fetchById } from "components/fetch"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import { ReviewItem, ReviewAuthor, ReviewContent } from "./Reviews.styled";
 export const Reviews = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
@@ -10,7 +11,7 @@ export const Reviews = () => {
     if (movie !== null) {
         return <div>
             {movie.results.length > 0 ? <ul>
-                {movie.results.map(item => <li key={item.id}>{item.author}:{item.content}</li>)}
+                {movie.results.map(item => <ReviewItem key={item.id}><ReviewAuthor>{item.author}</ReviewAuthor><ReviewContent>{item.content}</ReviewContent></ReviewItem>)}
             </ul> : <div>No reviews </div>}
         </div>
     }
