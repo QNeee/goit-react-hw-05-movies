@@ -8,11 +8,13 @@ const imageUrl = "https://image.tmdb.org/t/p/w300";
 const MovieDetails = ({ query }) => {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
+    const [status, setStatus] = useState('');
     useEffect(() => {
         fetchById(id).then(({ data }) => {
-            setMovie([data])
+            setMovie([data]);
+            setStatus("good");
         }).catch(eror => {
-            setMovie(null)
+            setStatus("bad")
         });
     }, [id]);
 
@@ -22,6 +24,9 @@ const MovieDetails = ({ query }) => {
     const movieGanres = genres => {
         if (genres === null) return;
         return genres.map(genre => genre.name).join(', ');
+    }
+    if (movie === null && status === "bad") {
+        return <Details><GoBackLink to={"/"}>back</GoBackLink><p>No DATA</p></Details>
     }
     if (movie !== null) {
         return <Details>
